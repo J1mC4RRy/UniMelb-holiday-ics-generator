@@ -2,4 +2,8 @@ streamlit
 requests
 beautifulsoup4
 ics
+<<<<<<< HEAD
 pytz
+=======
+pytz
+>>>>>>> d6cab8e22f8d5fa3908b2feac9005abdb0476f4c
