@@ -25,6 +25,14 @@ def format_date(date_str):
     date_obj = datetime.strptime(date_str, "%A %d %B %Y")
     return date_obj.strftime("%d/%m/%Y")
 
+# Function to generate a download link for a binary file
+def get_binary_download_link(file_path):
+    with open(file_path, 'rb') as f:
+        file_contents = f.read()
+        b64 = base64.b64encode(file_contents).decode()
+        href = f'<a href="data:file/ics;base64,{b64}" download="{file_path}">Download iCalendar (.ics) file</a>'
+        return href
+
 # Streamlit web app
 st.title("UniMelb Holiday Calendar Generator")
 
@@ -114,18 +122,13 @@ if st.button("Scrape and Generate Calendar"):
                     calendar.events.add(event)
 
                 # Save the calendar to the .ics file
-                with open(f'holiday_events_{selected_year}.ics', 'w') as f:
+                ics_filename = f'holiday_events_{selected_year}.ics'
+                with open(ics_filename, 'w') as f:
                     f.write(str(calendar))
 
                 # Create a button to download the .ics file
                 st.header("Download iCalendar (.ics) File:")
-                # Create a button to download the .ics file
-                if st.button("Download iCalendar (.ics) File"):
-                    with open(f'holiday_events_{selected_year}.ics', 'rb') as f:
-                        file_contents = f.read()
-                        b64 = base64.b64encode(file_contents).decode()
-                        href = f'<a href="data:file/ics;base64,{b64}" download="holiday_events_{selected_year}.ics">Download iCalendar (.ics) file</a>'
-                        st.markdown(href, unsafe_allow_html=True)
+                st.markdown(get_binary_download_link(ics_filename), unsafe_allow_html=True)
 
 # Collapsible "How Does It Work?" section
 with st.expander("**How Does It Work?**"):
