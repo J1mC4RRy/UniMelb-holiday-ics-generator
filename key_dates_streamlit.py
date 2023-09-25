@@ -26,7 +26,7 @@ def format_date(date_str):
     return date_obj.strftime("%d/%m/%Y")
 
 # Streamlit web app
-st.title("UniMelb Holiday Events Scraper and Calendar Generator")
+st.title("UniMelb Holiday Calendar Generator")
 
 # Instructions
 st.markdown("Select the year from the dropdown below, and then click 'Scrape and Generate Calendar' to generate the calendar for that year.")
