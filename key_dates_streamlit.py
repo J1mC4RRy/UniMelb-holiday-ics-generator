@@ -119,11 +119,13 @@ if st.button("Scrape and Generate Calendar"):
 
                 # Create a button to download the .ics file
                 st.header("Download iCalendar (.ics) File:")
-                with open(f'holiday_events_{selected_year}.ics', 'rb') as f:
-                    file_contents = f.read()
-                    b64 = base64.b64encode(file_contents).decode()
-                    href = f'<a href="data:file/ics;base64,{b64}" download="holiday_events_{selected_year}.ics">Download iCalendar (.ics) file</a>'
-                    st.markdown(href, unsafe_allow_html=True)
+                # Create a button to download the .ics file
+                if st.button("Download iCalendar (.ics) File"):
+                    with open(f'holiday_events_{selected_year}.ics', 'rb') as f:
+                        file_contents = f.read()
+                        b64 = base64.b64encode(file_contents).decode()
+                        href = f'<a href="data:file/ics;base64,{b64}" download="holiday_events_{selected_year}.ics">Download iCalendar (.ics) file</a>'
+                        st.markdown(href, unsafe_allow_html=True)
 
 # Collapsible "How Does It Work?" section
 with st.expander("**How Does It Work?**"):
