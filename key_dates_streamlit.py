@@ -7,10 +7,15 @@ import pytz
 import base64
 import pandas as pd
 
-# Function to create a timed event with local time
+# Function to create a timed event with local time starting at 8 AM and ending at 5 PM
 def create_timed_event(event_name, start_datetime, end_datetime):
     event = Event()
     event.name = f'[HOLIDAY] {event_name}'  # Prefix event_name with '[HOLIDAY]'
+    
+    # Set the start time to 8 AM and the end time to 5 PM
+    start_datetime = start_datetime.replace(hour=8, minute=0)
+    end_datetime = end_datetime.replace(hour=17, minute=0)
+    
     event.begin = start_datetime
     event.end = end_datetime
     return event
@@ -101,9 +106,9 @@ if st.button("Scrape and Generate Calendar"):
                     start_datetime = datetime.strptime(start_date_str, '%d/%m/%Y')
                     end_datetime = datetime.strptime(end_date_str, '%d/%m/%Y')
 
-                    if event_name in ['Australia Day', 'ANZAC Day', "King's Birthday", 'AFL Grand Final']:
-                        start_datetime = melbourne_timezone.localize(start_datetime.replace(hour=8, minute=0))
-                        end_datetime = melbourne_timezone.localize(end_datetime.replace(hour=20, minute=0))
+                    # Set the event to start at 8 AM and end at 5 PM
+                    start_datetime = melbourne_timezone.localize(start_datetime.replace(hour=8, minute=0))
+                    end_datetime = melbourne_timezone.localize(end_datetime.replace(hour=17, minute=0))
 
                     event = create_timed_event(event_name, start_datetime, end_datetime)
                     calendar.events.add(event)
