@@ -29,7 +29,7 @@ def format_date(date_str):
 st.title("UniMelb Holiday Calendar Generator")
 
 # Instructions
-st.markdown("Select the year from the dropdown below, and then click 'Scrape and Generate Calendar' to generate the calendar for that year.")
+st.markdown("Select the year from the dropdown below, and then click 'Generate Calendar' to generate the calendar for that year.")
 
 # Get the current year and convert it to a string
 current_year = datetime.now().year
@@ -133,7 +133,7 @@ with st.expander("**How Does It Work?**"):
     st.write("Pick a year (2022, 2023, or 2024) for your calendar.")
 
     st.write("**2. Generate the Calendar:**")
-    st.write("Hit the 'Generate' button, and the app will collect holiday dates and names from the [University of Melbourne's website](https://www.unimelb.edu.au/dates/university-holidays?queries_year_fquery=this_year) for the chosen year.")
+    st.write("Hit the 'Generate Calendar' button, and the app will collect holiday dates and names from the [University of Melbourne's website](https://www.unimelb.edu.au/dates/university-holidays?queries_year_fquery=this_year) for the chosen year.")
 
     st.write("**3. Behind the Scenes:**")
     st.write("The app works behind the scenes to create a calendar file (iCalendar) with all the holidays, naming them '[HOLIDAY] Holiday Name.'")
