@@ -48,7 +48,7 @@ year_to_url = {
 # Input URL
 url = year_to_url.get(selected_year, "")
 
-if st.button("Scrape and Generate Calendar"):
+if st.button("Generate Calendar"):
     if not url:
         st.error("Please select a valid year.")
     else:
