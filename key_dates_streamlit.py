@@ -125,6 +125,20 @@ if st.button("Scrape and Generate Calendar"):
                     href = f'<a href="data:file/ics;base64,{b64}" download="holiday_events_{selected_year}.ics">Download iCalendar (.ics) file</a>'
                     st.markdown(href, unsafe_allow_html=True)
 
+# Collapsible "How Does It Work?" section
+with st.expander("**How Does It Work?**"):
+    st.write("**1. Choose the Year:**")
+    st.write("Pick a year (2022, 2023, or 2024) for your calendar.")
+
+    st.write("**2. Generate the Calendar:**")
+    st.write("Hit the 'Generate' button, and the app will collect holiday dates and names from the [University of Melbourne's website](https://www.unimelb.edu.au/dates/university-holidays?queries_year_fquery=this_year) for the chosen year.")
+
+    st.write("**3. Behind the Scenes:**")
+    st.write("The app works behind the scenes to create a calendar file (iCalendar) with all the holidays, naming them '[HOLIDAY] Holiday Name.'")
+
+    st.write("**4. Download and Enjoy:**")
+    st.write("You can download the calendar and import it into Outlook or your favorite calendar app. Now, you have all the holiday events in your calendar, starting at 9 AM and ending at 5 PM.")
+
 # Hide Streamlit footer by injecting custom CSS
 st.markdown(
     """
